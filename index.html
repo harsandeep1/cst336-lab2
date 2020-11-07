@@ -53,6 +53,7 @@
                         score = 0;
                         let q1Response = $("#q1").val().toLowerCase();
                         let q2Response = $("#q2").val();
+                        let q4Response = $("input[name=q4]:checked").val();
                         
                         //Question 1
                         if(q1Response == "sacramento"){
@@ -61,11 +62,26 @@
                               wrongAnswer(1);
                         }
                         
-                          //Question 2
+                        //Question 2
                         if(q2Response == "mo"){
                               rightAnswer(2)
                         }else{
                               wrongAnswer(2);
+                        }
+                        
+                        //Question 3
+                        if($("#Jefferson").is(":checked") && $("#Roosevelt").is(":checked")
+                        && !$("#Jackson").is(":checked") && !$("#Franklin").is(":checked")){
+                              rightAnswer(3);
+                        }else{
+                              wrongAnswer(3);
+                        }
+                        
+                        //Question 4
+                        if(q4Response == "Rhode Island"){
+                              rightAnswer(4);
+                        }else{
+                              wrongAnswer(4);
                         }
                         
                         $("#totalScore").html(`Total Score: ${score}`);
@@ -79,7 +95,7 @@
       
       <h3><span id="markImg1"></span>What is the capital of California?</h3>
       <input type="text" id="q1"/>
-      <br /> <br />
+      <br /><br />
       
       <div id="q1Feedback"></div>
       <br />
@@ -95,6 +111,25 @@
       <br /><br />
       <div id="q2Feedback"></div>
       <br />
+      
+      <h3><span id="markImg3"></span>What presidents are carved into mount Rushmore?</h3>
+      <input type="checkbox" id="Jackson"/> <label for="Jackson">A. Jackson</label>
+      <input type="checkbox" id="Franklin"/> <label for="Franklin">B. Franklin</label>
+      <input type="checkbox" id="Jefferson"/> <label for="Jefferson">T. Jefferson</label>
+      <input type="checkbox" id="Roosevelt"/> <label for="Roosevelt">T. Roosevelt</label>
+      <br />
+      
+      <div id="q3Feedback"></div>
+      <br /><br />
+      
+      <h3><span id="markImg4"></span>What is the smallest US State?</h3>
+      <input type="radio" name="q4" id="me" value="Maine"/><label for="me">Maine</label>
+      <input type="radio" name="q4" id="ri" value="Rhode Island"/><label for="ri">Rhode Island</label>
+      <input type="radio" name="q4" id="md" value="Maryland"/><label for="md">Maryland</label>
+      <input type="radio" name="q4" id="de" value="Delaware"/><label for="de">Delaware</label>
+      <div id="q4Feedback"></div>
+      <br />
+
       
       <h3 id="validationFdbk" class="bg-danger text-white"></h3>
       <button type="button" class="btn btn-outline-primary" data-toggle="button" 
