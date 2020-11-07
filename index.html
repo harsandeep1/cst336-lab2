@@ -31,6 +31,24 @@
                         if(!isFormValid()){
                               return;
                         }
+                        
+                        //variables
+                        let score = 0;
+                        let q1Response = $("#q1").val().toLowerCase();
+                        
+                        //Question 1
+                        if(q1Response == "sacramento"){
+                              $("#q1Feedback").html("Correct!");
+                              $("#q1Feedback").attr("class", "bg-success text-white");
+                              $("#markImg1").html("<img src='img/checkmark.png' alt='checkmark'>");
+                              score += 20;
+                        }else{
+                              $("#q1Feedback").html("Incorrect!");
+                              $("#q1Feedback").attr("class", "bg-danger text-white");
+                              $("#markImg1").html("<img src='img/xmark.png' alt='xmark'>");
+                        }
+                        
+                        $("#totalScore").html(`Total Score: ${score}`);
                   }
                   
             })//ready
@@ -44,7 +62,20 @@
       <br /> <br />
       
       <div id="q1Feedback"></div>
+      <br />
+      
+      <h3><span id="markImg2"></span>What is the longest river?</h3>
+      <select id="q2">
+            <option value="">Select One</option>
+            <option value="ms">Mississippi</option>
+            <option value="mo">Missouri</option>
+            <option value="co">Colorado</option>
+            <option value="de">Delaware</option>
+      </select>
       <br /><br />
+      <div id="q2Feedback"></div>
+      <br />
+      
       <h3 id="validationFdbk" class="bg-danger text-white"></h3>
       <button type="button" class="btn btn-outline-primary" data-toggle="button" 
       aria-pressed="false" autocomplete="off">Submit Quiz</button>
