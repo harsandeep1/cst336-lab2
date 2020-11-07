@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>US Quiz</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" 
+      crossorigin="anonymous">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script>
+            $(document).ready(function(){
+                  
+                  //event Listeners
+                  $("button").on("click", gradeQuiz);
+                  
+                  //functions
+                  function isFormValid(){
+                        let isValid = true;
+                        if ($("#q1").val() == ""){
+                              isValid = false;
+                              $("#validationFdbk").html("Question 1 was not answered!!!");
+                        }
+                        return isValid;
+                  }
+                  
+                  function gradeQuiz(){
+                        $("#validationFdbk").html(""); //resets validation feedback
+                        
+                        if(!isFormValid()){
+                              return;
+                        }
+                  }
+                  
+            })//ready
+      </script>
+</head>
+<body class="text-center">
+      <h1 class="jumbotron">US Geography Quiz</h1>
+      
+      <h3><span id="markImg1"></span>What is the capital of California?</h3>
+      <input type="text" id="q1"/>
+      <br /> <br />
+      
+      <div id="q1Feedback"></div>
+      <br /><br />
+      <h3 id="validationFdbk" class="bg-danger text-white"></h3>
+      <button type="button" class="btn btn-outline-primary" data-toggle="button" 
+      aria-pressed="false" autocomplete="off">Submit Quiz</button>
+      <br />
+      <h2 id="totalScore" class="text-info"></h2>
+</body>
+</html>
