@@ -5,11 +5,19 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>US Quiz</title>
+      
+      <!--bootstrap CDN stylesheet-->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" 
       crossorigin="anonymous">
+      
+      <!--jQuery library-->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      
+      <!--shuffle library-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.11.0/underscore-min.js"></script>
+      
+      <!--jQuery ready method-->
       <script>
             $(document).ready(function(){
                   
@@ -26,7 +34,8 @@
                         $(".q5Choice").css("background", "");
                         $(this).css("background", "rgb(255, 255, 0)");
                   });
-                        
+                   
+                  // Question 4 shuffler      
                   displayQ4Choices();
                   
                   function displayQ4Choices(){
@@ -63,15 +72,15 @@
                         $(`#markImg${index}`).html("<img src='img/xmark.png' alt='xmark'>");
                   }
                   
-                  // function safeZone(index){
-                  //       $(`#totalScore${index}Feedback`).html(`Congratulation!!! You got ${score}.`);
-                  //       $(`#totalScore${index}Feedback`).attr("class", "bg-success text-white");
-                  // }
+                  function safeZone(){
+                        $("#totalScoreMsg").html(`Congratulation!!! You got ${score}.`);
+                        $("#totalScoreMsg").attr("class", "bg-success text-white");
+                  }
                   
-                  // function dangerZone(index){
-                  //       $(`#totalScore${index}Feedback`).html(`Oh no!!! You got ${score}.`);
-                  //       $(`#totalScore${index}Feedback`).attr("class", "bg-danger text-white");
-                  // }
+                  function dangerZone(){
+                        $("#totalScoreMsg").html(`Oh no!!! You got ${score}.`);
+                        $("#totalScoreMsg").attr("class", "bg-danger text-white");
+                  }
             
                   
                   function gradeQuiz(){
@@ -91,6 +100,7 @@
                         let q8Response = $("#q8").val();
                         let q9Response = $("input[name=q9]:checked").val();
                         let q10Response = $("input[name=q10]:checked").val();
+                        
                         
                         //Question 1
                         if(q1Response == "sacramento"){
@@ -164,13 +174,15 @@
                         }else{
                               wrongAnswer(10);
                         }
-                        // //Total Score Message
-                        // if((score => 80) && (score <= 100)){
-                        //       safeZone(1);
-                        // }else{
-                        //       dangerZone(1);
-                        // }
                         
+                        //Total Score Message
+                        if(score >= 80){
+                              safeZone();
+                        }else{
+                              dangerZone();
+                        }
+                        
+                        //Submit & total attempts buttons
                         $("#totalScore").html(`Total Score: ${score}`);
                         $("#totalAttempts").html(`Total Attempts: ${++attempts}`);
                         localStorage.setItem("total_attempts", attempts);
@@ -180,8 +192,10 @@
       </script>
 </head>
 <body class="text-center">
+      <!--Main header-->
       <h1 class="jumbotron">US Geography Quiz</h1>
       
+      <!--Question 1 on the webpage-->
       <h3><span id="markImg1"></span>What is the capital of California?</h3>
       <input type="text" id="q1"/>
       <br /><br />
@@ -189,6 +203,7 @@
       <div id="q1Feedback"></div>
       <br />
       
+      <!--Question 2 on the webpage-->
       <h3><span id="markImg2"></span>What is the longest river?</h3>
       <select id="q2">
             <option value="">Select One</option>
@@ -201,6 +216,7 @@
       <div id="q2Feedback"></div>
       <br />
       
+      <!--Question 3 on the webpage-->
       <h3><span id="markImg3"></span>What presidents are carved into mount Rushmore?</h3>
       <input type="checkbox" id="Jackson"/> <label for="Jackson">A. Jackson</label>
       <input type="checkbox" id="Franklin"/> <label for="Franklin">B. Franklin</label>
@@ -211,12 +227,14 @@
       <div id="q3Feedback"></div>
       <br />
       
+      <!--Question 4 on the webpage-->
       <h3><span id="markImg4"></span>What is the smallest US State?</h3>
       <div id="q4Choices"></div>
       <br /><br />
       <div id="q4Feedback"></div>
       <br />
-
+      
+      <!--Question 5 on the webpage-->
       <h3><span id="markImg5"></span>What image is in the Great Seal of the State of California?</h3>
       <img src="img/seal1.png" alt="Seal 1" class="q5Choice" id="seal1"></img>
       <img src="img/seal2.png" alt="Seal 2" class="q5Choice" id="seal2"></img>
@@ -225,6 +243,7 @@
       <div id="q5Feedback"></div>
       <br />
       
+      <!--Question 6 on the webpage-->
       <h3><span id="markImg6"></span>What happened in 1906 in the State of California?</h3>
       <select id="q6">
             <option value="">Select One</option>
@@ -237,12 +256,14 @@
       <div id="q6Feedback"></div>
       <br />
       
+      <!--Question 7 on the webpage-->
       <h3><span id="markImg7"></span>What national park was opened in 1890 in California?</h3>
       <input type="text" id="q7"/>
       <br /><br />
       <div id="q7Feedback"></div>
       <br />
       
+      <!--Question 8 on the webpage-->
       <h3><span id="markImg8"></span>In 1913, What water activity was completed?</h3>
       <input type="checkbox" id="ti"/> <label for="ti">Titanic</label>
       <input type="checkbox" id="sd"/> <label for="sd">San Diego Aquarium</label>
@@ -252,6 +273,7 @@
       <div id="q8Feedback"></div>
       <br />
       
+      <!--Question 9 on the webpage-->
       <h3><span id="markImg9"></span>In 1850, California became the ____ state of the United States?</h3>
       <input type="radio" name="q9" id="1st" value="1st"/> <label for="1st">1st</label>
       <input type="radio" name="q9" id="11st" value="11st"/> <label for="11st">11st</label>
@@ -262,6 +284,7 @@
       <div id="q9Feedback"></div>
       <br />
       
+      <!--Question 10 on the webpage-->
       <h3><span id="markImg10"></span>In 1937, which bridge was finished and opened up for traffice?</h3>
       <input type="checkbox" id="bay"/> <label for="bay">Bay Bridge</label>
       <input type="checkbox" id="gb"/> <label for="gb">Golden Gate Bridge</label> 
@@ -271,13 +294,13 @@
       <div id="q10Feedback"></div>
       <br />
       
+      <!--bootstrap button classes-->
       <h3 id="validationFdbk" class="bg-danger text-white"></h3>
       <button type="button" class="btn btn-outline-primary" data-toggle="button" 
       aria-pressed="false" autocomplete="off">Submit Quiz</button>
       <br />
-      <h2 id="totalScore" class="text-info"></h2>
-      
-      <div id="totalScore1Feedback"></div>
+      <h2 id="totalScore"></h2>
+      <div id="totalScoreMsg"></div>
       
       <h3 id="totalAttempts"></h3>
       
