@@ -236,9 +236,9 @@
       
       <!--Question 5 on the webpage-->
       <h3><span id="markImg5"></span>What image is in the Great Seal of the State of California?</h3>
-      <img src="img/seal1.png" alt="Seal 1" class="q5Choice" id="seal1"></img>
-      <img src="img/seal2.png" alt="Seal 2" class="q5Choice" id="seal2"></img>
-      <img src="img/seal3.png" alt="Seal 3" class="q5Choice" id="seal3"></img>
+      <img src="img/seal1.png" alt="Seal 1" class="q5Choice" id="seal1" />
+      <img src="img/seal2.png" alt="Seal 2" class="q5Choice" id="seal2" />
+      <img src="img/seal3.png" alt="Seal 3" class="q5Choice" id="seal3" />
       <br /><br />
       <div id="q5Feedback"></div>
       <br />
@@ -297,7 +297,7 @@
       <!--bootstrap button classes-->
       <h3 id="validationFdbk" class="bg-danger text-white"></h3>
       <button type="button" class="btn btn-outline-primary" data-toggle="button" 
-      aria-pressed="false" autocomplete="off">Submit Quiz</button>
+      aria-pressed="false">Submit Quiz</button>
       <br />
       <h2 id="totalScore"></h2>
       <div id="totalScoreMsg"></div>
